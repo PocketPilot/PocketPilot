@@ -3,6 +3,8 @@ PocketPilot is a reduced version of the BBBmini PCB (https://github.com/mirkix/B
 
 The original BBBmini PCB (https://github.com/mirkix/BBBMINI-PCB) is designed for BeagleBone Black (http://beagleboard.org/black) and can be soldered by hand by most people since it only uses large "through-hole" components and common "Dupont" servo wiring connectors. However, it's quite big & heavy compared to the small PocketBeagle, and the connectors can potentially have a loose connection when on a moving robot or quadcopter, and also not everyone wants to solder their own electronics. So PocketPilot is small enough to suit PocketBeagle, by using tiny SMD components and reliable SMD connectors. PocketPilot is open-source hardware, just like BBBMini, but not many people will be capable of soldering their own SMD board, so PocketPilot is intended to also be available as a per-soldered kit.
 
+![Connector Stack diagram](https://raw.githubusercontent.com/PocketPilot/PocketPilot/master/doc/Connector%20Stack.png)
+
 Original description of the Initial Design (ie: selection of pins & ports needed) is at 
 https://github.com/shervinemami/BBBmicro-PCB/wiki/Initial-Design
 

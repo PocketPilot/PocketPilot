@@ -14,11 +14,12 @@ PocketPilot v1 (based on BBBmini https://github.com/mirkix/BBBMINI-PCB) can be s
 
 ## Initial Prototype
 
-[![Video of initial prototype](https://img.youtube.com/vi/BBnUvO6x0oY/0.jpg)](https://youtu.be/BBnUvO6x0oY)
+Video of initial prototype, keeping a quadcopter stable indoors using an Optical Flow sensor instead of GPS:
+[![Video of initial prototype](https://img.youtube.com/vi/BBnUvO6x0oY/0.jpg "Video of initial prototype")](https://youtu.be/BBnUvO6x0oY)
 
-![Wiring diagram of prototype](https://raw.githubusercontent.com/PocketPilot/PocketPilot/master/doc/Initial%20Prototype/Pocket%20Wiring.jpg)
+![Wiring diagram of prototype](https://raw.githubusercontent.com/PocketPilot/PocketPilot/master/doc/Initial%20Prototype/Pocket%20Wiring.jpg "Wiring diagram of prototype")
 
-![Photo of initial prototype](https://raw.githubusercontent.com/PocketPilot/PocketPilot/master/doc/Initial%20Prototype/Pocket%20Circuit.jpg)
+![Photo of initial prototype](https://raw.githubusercontent.com/PocketPilot/PocketPilot/master/doc/Initial%20Prototype/Pocket%20Prototype.jpg "Photo of initial prototype")
 
 Original description of the Initial Design (ie: selection of pins & ports needed) is at 
 https://github.com/shervinemami/BBBmicro-PCB/wiki/Initial-Design

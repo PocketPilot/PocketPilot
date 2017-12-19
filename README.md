@@ -18,7 +18,11 @@ Video of initial prototype, keeping a quadcopter stable indoors using an Optical
 
 [![Video of initial prototype](https://img.youtube.com/vi/BBnUvO6x0oY/0.jpg "Video of initial prototype")](https://youtu.be/BBnUvO6x0oY)
 
+Wiring diagram of prototype:
+
 ![Wiring diagram of prototype](https://raw.githubusercontent.com/PocketPilot/PocketPilot/master/doc/Initial%20Prototype/Pocket%20Wiring.jpg "Wiring diagram of prototype")
+
+Photo of initial prototype:
 
 ![Photo of initial prototype](https://raw.githubusercontent.com/PocketPilot/PocketPilot/master/doc/Initial%20Prototype/Pocket%20Prototype.jpg "Photo of initial prototype")
 

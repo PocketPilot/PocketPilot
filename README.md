@@ -51,5 +51,6 @@ UNLESS OTHERWISE MUTUALLY AGREED TO BY THE PARTIES IN WRITING, LICENSOR OFFERS T
 
 Rev 0.0
 * Discussion about initial design, at "https://github.com/shervinemami/BBBmicro-PCB/wiki/Initial-Design"
+
 Rev 0.1
 * Initial Prototype by Patrick Poirier, flown on a quadcopter "https://www.youtube.com/watch?v=BBnUvO6x0oY".

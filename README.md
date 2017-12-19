@@ -9,12 +9,13 @@ There will be several different versions of the PocketPilot board coming out ove
 
 PocketPilot v1 (based on BBBmini https://github.com/mirkix/BBBMINI-PCB) can be soldered by hand by most people since it only uses large "through-hole" components and common "Dupont" servo wiring connectors. However, it's quite big & heavy compared to the small PocketBeagle, and the connectors can potentially have a loose connection when on a moving robot or quadcopter, and also not everyone wants to solder their own electronics. So PocketPilot v3 will be using tiny SMD components, reliable SMD connectors, and available as a pre-soldered kit. All PocketPilot boards are open-source hardware, just like BBBMini, but most people will only be capable of soldering v1 and maybe v2.
 
-![Connector Stack diagram](https://raw.githubusercontent.com/PocketPilot/PocketPilot/master/doc/Initial%20Prototype/Connector%20Stack.png)
+![Connector Stack diagram](https://raw.githubusercontent.com/PocketPilot/PocketPilot/master/doc/Initial%20Prototype/Connector%20Stack.png "Connector Stack diagram")
 
 
 ## Initial Prototype
 
 Video of initial prototype, keeping a quadcopter stable indoors using an Optical Flow sensor instead of GPS:
+
 [![Video of initial prototype](https://img.youtube.com/vi/BBnUvO6x0oY/0.jpg "Video of initial prototype")](https://youtu.be/BBnUvO6x0oY)
 
 ![Wiring diagram of prototype](https://raw.githubusercontent.com/PocketPilot/PocketPilot/master/doc/Initial%20Prototype/Pocket%20Wiring.jpg "Wiring diagram of prototype")

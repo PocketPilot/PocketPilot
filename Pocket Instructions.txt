@@ -30,6 +30,9 @@ UPDATING AND LOADING:
 sudo apt update
 sudo apt upgrade bb-cape-overlays
 
+Get the configuration file:
+sudo wget https://github.com/PocketPilot/PocketPilot/tree/master/config/pocketpilot_pin.cfg
+
 Extend partition: 
 sudo /opt/scripts/tools/grow_partition.sh
 Upgrade Kernel to RT 4.14:

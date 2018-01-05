@@ -66,6 +66,10 @@ enable_uboot_cape_universal=1
 cmdline=coherent_pool=1M net.ifnames=0 quiet
 Note: only the ''active" commands are showned.
 
+You can check on the loaded services using
+sudo systemctl status
+or
+sudo systemctl list-dependencies 
 
 
 WIFI CONNECTION

@@ -93,11 +93,25 @@ Once configure the service will be automatically started
 
 OPTION B) HOSTAPD
 Use it as an Access Point,  on which you can connect yoy PC or Tablet.
+==============================================================
 Please note that not all chipsets can act as an Acces Point, 
 take a look at the column AP =Yes: 
 https://wireless.wiki.kernel.org/en/users/Drivers
 
-This require additionnals steps
+This is the short list of the AP chipset:
+Driver	    Manufacturer	   PHY modes
+ath9k_htc	 Atheros	        B/G/N
+carl9170	  ZyDAS/Atheros	  A(1)/B/G/N
+libertas_tfMarvell	        B/G
+p54usb	    Intersil/Conexant	A(1)/B/G
+rt73usb	   Ralink	        A(1)/B/G
+rt2500usb	 Ralink	        A(1)/B/G
+rt2800usb	Ralink	         A(1)/B/G/N
+rtl8192cu	Realtek	        B/G/N
+zd1211rw	 ZyDAS/Atheros	  A(2)/B/G
+==============================================================
+
+
 First disable connman:
 sudo systemctl disable connman
 Then update tools:
@@ -111,8 +125,9 @@ and confirm wlan0 or wlan1 or else
 Manually start the wireless card
 sudo ifconfig wlan0 up
 
-Confirm its up (this sould show Wlanx as 
+Confirm its up 
 ifconfig
+You should see the Wlan interface with the others
 
 
 Now edit network files:

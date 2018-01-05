@@ -38,7 +38,7 @@ Shutdown apache2 (we dont use it):
 sudo systemctl disable apache2
 
 REBOOT AND TEST
--sudo reboot
+sudo reboot
  
 Confirm the New kernel:
 uname -a

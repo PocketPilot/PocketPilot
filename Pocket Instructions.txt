@@ -25,7 +25,7 @@ PING google.com (172.217.6.206) 56(84) bytes of data.
 A special note about FIREWALLS:  make sure your firewall is configured to  allow  a share connection !!
 
 UPDATING AND LOADING:
--sudo apt update
+sudo apt update
 Extend partition: 
 sudo /opt/scripts/tools/grow_partition.sh
 Upgrade Kernel to RT 4.14:

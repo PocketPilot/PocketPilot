@@ -94,8 +94,8 @@ Once configure the service will be automatically started
 OPTION B) HOSTAPD
 Use it as an Access Point,  on which you can connect yoy PC or Tablet.
 Please note that not all chipsets can act as an Acces Point, 
-take a look in Driver capabilities section and on the column Master(AP) mode=Yes: 
-https://en.wikipedia.org/wiki/Comparison_of_open-source_wireless_drivers#Driver_capabilities
+take a look at the column AP =Yes: 
+https://wireless.wiki.kernel.org/en/users/Drivers
 
 This require additionnals steps
 First disable connman:

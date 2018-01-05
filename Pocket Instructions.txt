@@ -102,6 +102,13 @@ Check the wifi dongle number with
 ifconfig -a
 and confirm wlan0 or wlan1 or else
 
+Manually start the wireless card
+sudo ifconfig wlan0 up
+
+Confirm its up (this sould show Wlanx as 
+ifconfig
+
+
 Now edit network files:
 sudo nano /etc/network/interfaces and add the wifi config (with wlan-number)
 auto wlan0
@@ -133,4 +140,26 @@ wpa_pairwise=TKIP
 rsn_pairwise=CCMP
 
 
+Finaly make a new dnsmasq.conf file
+make a copy of existing 
+sudo mv /etc/dnsmasq.conf /etc/dnsmasq.bkup
+
+create new file
+sudo nano /etc/dnsmasq.conf
+interface=lo,wlan0
+no-dhcp-interface=lo
+dhcp-range=192.168.8.20,192.168.8.40,255.255.255.0,12h
+
+interface=usb0
+dhcp-range=192.168.7.1,192.168.7.1,12h
+
+
+You can now reboot
+sudo reboot
+
+Looking at your Windows PC you shoud see the AP appearing within in a minute
+Connect to wireless using the wpa_passphrase 
+open a ssh session (Putty)
+log on to 192.168.8.1
+and voilà ;-)
 

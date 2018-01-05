@@ -99,7 +99,7 @@ sudo apt-get install hostapd dnsmasq iptables iw wireless-tools
 
 
 Check the wifi dongle number with 
-ifconfig 
+ifconfig -a
 and confirm wlan0 or wlan1 or else
 
 Now edit network files:

@@ -175,6 +175,10 @@ interface=usb0
 dhcp-range=192.168.7.1,192.168.7.1,12h
 
 
+ENABLE THE SERVICES
+sudo systemctl enable networking
+sudo systemctl enable hostapd
+
 You can now reboot
 sudo reboot
 
@@ -203,8 +207,19 @@ This utility can use a parameter file to automatically configure the Beagle Pock
 This is how its launched:
 sudo config-pin -f ./pocketpilot_pin.cfg
 
-We nee to download both files
-sudo wget 
+We have to download the configuration file
+make sure you are in /home/debian
+cd  /home/debian
+sudo wget https://github.com/PocketPilot/PocketPilot/tree/master/config/pocketpilot_pin.cfg
+........ need to dowload while tethered......
+
+
+
+
+
+
+
+
 
 
 

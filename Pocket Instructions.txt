@@ -10,7 +10,9 @@ The "USB-tether-gadget", allows you to bridge and share the Ethernet Network Dev
 Read the Instruction on how to connect here:
 https://www.digikey.com/en/maker/blogs/how-to-connect-a-beaglebone-black-to-the-internet-using-usb/cdf66181b3a5436e9ad730e4ed4cf9ee
 
-As described in the above,  you need to create a route sudo /sbin/route add default gw 192.168.7.1
+As described in the above,  you need to create a route:
+sudo /sbin/route add default gw 192.168.7.1
+
 NOTE: On the new image we cannot add  name server to the resolv file,
 we need to create a temporary config file:
 sudo nano /etc/resolv.conf

@@ -161,8 +161,8 @@ dhcp-range=192.168.7.1,192.168.7.1,12h
 You can now reboot
 sudo reboot
 
-Looking at your Windows PC you shoud see the AP appearing within in a minute
-Connect to wireless using the wpa_passphrase 
+While monitoring the WIFI from the Windows PC, the ssid=Pocket-Pilot should appear within in a minute
+Connect to Pocket-Pilot using the wpa_passphrase 
 open a ssh session (Putty)
 log on to 192.168.8.1
 and voilà ;-)

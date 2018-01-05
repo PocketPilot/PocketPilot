@@ -184,3 +184,28 @@ open a ssh session (Putty)
 log on to 192.168.8.1
 and voilà ;-)
 
+
+
+ARDUPILOT
+Make Firmware as per BBBMINI instructions:
+https://github.com/mirkix/BBBMINI/blob/master/doc/software/software.md
+and build using pocket profile:
+/waf configure --board=pocket
+
+copy file in /home/debian
+
+PIN CONFIGURE
+The new kernel is now using uboot overlays 
+https://elinux.org/Beagleboard:BeagleBoneBlack_Debian#U-Boot_Overlays
+
+All the I/O are configured from user space using config-pin utility
+This utility can use a parameter file to automatically configure the Beagle Pocket
+This is how its launched:
+sudo config-pin -f ./pocketpilot_pin.cfg
+
+We nee to download both files
+sudo wget 
+
+
+
+

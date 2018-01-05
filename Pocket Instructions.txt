@@ -28,6 +28,8 @@ A special note about FIREWALLS:  make sure your firewall is configured to  allow
 
 UPDATING AND LOADING:
 sudo apt update
+sudo apt upgrade bb-cape-overlays
+
 Extend partition: 
 sudo /opt/scripts/tools/grow_partition.sh
 Upgrade Kernel to RT 4.14:

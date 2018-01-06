@@ -230,8 +230,7 @@ Conflicts=arduplane.service ardupilot.service ardurover.service
 
 [Service]
 ExecStartPre=/bin/bash -c "/usr/bin/config-pin -f /home/debian/pocketpilot_pin.cfg"
-ExecStart=/home/debian/arducopter -C udp:192.168.2.105:14550 -E /dev/ttyO1
-ExecStart=/home/debian/arducopter -C udp:192.168.2.105:14550 -E /dev/ttyO1
+ExecStart=/home/debian/arducopter -C udp:192.168.8.34:14550 -E /dev/ttyO1
 
 Restart=on-failure
 
@@ -242,20 +241,20 @@ WantedBy=multi-user.target
 
 ENABLE THE NEW SERVICE
 sudo systemctl enable arducopter.service
-
 the service will start automatically at bootup.
 
+
+
+SERVICE RELATED UTILITIES
 If you want to start/stop this service (or any other services):
 Start service: systemctl start {SERVICENAME}
 sudo systemctl start arducopter.service
-
 Stop service: systemctl stop {SERVICENAME}
 sudo systemctl stop arducopter.service
 
-
-Services related utilities
 sudo systemctl status
 sudo systemctl list-dependencies 
+
 
 
 TEST THE POCKET-BEAGLE

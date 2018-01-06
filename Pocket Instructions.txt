@@ -211,14 +211,65 @@ https://elinux.org/Beagleboard:BeagleBoneBlack_Debian#U-Boot_Overlays
 
 All the I/O are configured from user space using config-pin utility
 This utility can use a parameter file to automatically configure the Beagle Pocket
-This is how its launched:
+(We have downloaded this configuration file on previous step)
+This is how its launched manually:
 sudo config-pin -f ./pocketpilot_pin.cfg
 
-We have to download the configuration file
-make sure you are in /home/debian
-cd  /home/debian
-sudo wget https://github.com/PocketPilot/PocketPilot/tree/master/config/pocketpilot_pin.cfg
-........ need to dowload while tethered......
+And this will be launched automatically as part of the arducopter service
+
+
+ARDUCOPTER SERVICE
+We will edit a file containing instructions to load the pins and ArduCopter
+
+ sudo nano /lib/systemd/system/arducopter.service
+
+[Unit]
+Description=ArduCopter Service
+After=networking.service
+Conflicts=arduplane.service ardupilot.service ardurover.service
+
+[Service]
+ExecStartPre=/bin/bash -c "/usr/bin/config-pin -f /home/debian/pocketpilot_pin.cfg"
+ExecStart=/home/debian/arducopter -C udp:192.168.2.105:14550 -E /dev/ttyO1
+ExecStart=/home/debian/arducopter -C udp:192.168.2.105:14550 -E /dev/ttyO1
+
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
+
+
+ENABLE THE NEW SERVICE
+sudo systemctl enable arducopter.service
+
+the service will start automatically at bootup.
+
+If you want to start/stop this service (or any other services):
+Start service: systemctl start {SERVICENAME}
+sudo systemctl start arducopter.service
+
+Stop service: systemctl stop {SERVICENAME}
+sudo systemctl stop arducopter.service
+
+
+Services related utilities
+sudo systemctl status
+sudo systemctl list-dependencies 
+
+
+TEST THE POCKET-BEAGLE
+Start Pocket-Beagle
+Connect to Acces Point
+Start Mission Planner
+Connect UDP
+Configure as per ArduPilot instructions
+
+
+
+
+
+
 
 
 

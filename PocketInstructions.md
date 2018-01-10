@@ -253,19 +253,23 @@ ENABLE THE NEW SERVICE
 the service will start automatically at bootup.
 
 
-
 SERVICE RELATED UTILITIES
 If you want to start/stop this service (or any other services):
+
 Start service: `systemctl start {SERVICENAME}`
+
 `sudo systemctl start arducopter.service`
+
 Stop service: `systemctl stop {SERVICENAME}`
+
 `sudo systemctl stop arducopter.service`
 
 `sudo systemctl status`
+
 `sudo systemctl list-dependencies`
 
 
-##TEST THE POCKET-BEAGLE
+## TEST THE POCKET-BEAGLE
 * Start Pocket-Beagle
 * Connect to Acces Point
 * Start Mission Planner

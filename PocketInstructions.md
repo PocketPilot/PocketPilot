@@ -29,6 +29,7 @@ A special note about FIREWALLS:  make sure your firewall is configured to  allow
 
 ## UPDATING AND LOADING:
 `sudo apt update`
+
 `sudo apt upgrade bb-cape-overlays`
 
 Get the configuration file:
@@ -36,6 +37,7 @@ Get the configuration file:
 
 Extend partition: 
 `sudo /opt/scripts/tools/grow_partition.sh`
+
 Upgrade Kernel to RT 4.14:
 `sudo /opt/scripts/tools/update_kernel.sh --bone-rt-kernel --lts-4_14`
 
@@ -53,13 +55,15 @@ Confirm the New kernel:
 `Linux beaglebone 4.14.11-bone-rt-r12 #1 PREEMPT RT Wed Jan 3 23:08:51 UTC 2018 armv7l GNU/Linux`
 
 Confirm file system has been extended:
-```df
+```
+df
 Filesystem 		1K-blocks	 Used 		Available 	Use% 
 /dev/mmcblk0p1 	15247576 	1739372 	12837360 	12% /
 ```
 
 Check SPI correctly mapped (without adding a DTB):
-```ls /dev/spi*
+```
+ls /dev/spi*
 /dev/spidev0.0 /dev/spidev1.0 /dev/spidev1.1
 ```
 
@@ -105,8 +109,7 @@ Once configure the service will be automatically started
 
 
 OPTION B) HOSTAPD
-Use it as an Access Point,  on which you can connect yoy PC or Tablet.
-==============================================================
+Use it as an Access Point, on which you can connect yoy PC or Tablet.
 Please note that not all chipsets can act as an Acces Point, 
 take a look at the column AP =Yes: 
 https://wireless.wiki.kernel.org/en/users/Drivers
@@ -122,8 +125,6 @@ rt2500usb	 Ralink	        A(1)/B/G
 rt2800usb	Ralink	         A(1)/B/G/N
 rtl8192cu	Realtek	        B/G/N
 zd1211rw	 ZyDAS/Atheros	  A(2)/B/G
-==============================================================
-
 
 First disable connman:
 `sudo systemctl disable connman`

@@ -115,16 +115,17 @@ take a look at the column AP =Yes:
 https://wireless.wiki.kernel.org/en/users/Drivers
 
 This is the short list of the AP chipset:
+
 Driver	    Manufacturer	   PHY modes
-ath9k_htc	 Atheros	        B/G/N
-carl9170	  ZyDAS/Atheros	  A(1)/B/G/N
-libertas_tfMarvell	        B/G
-p54usb	    Intersil/Conexant	A(1)/B/G
-rt73usb	   Ralink	        A(1)/B/G
-rt2500usb	 Ralink	        A(1)/B/G
-rt2800usb	Ralink	         A(1)/B/G/N
-rtl8192cu	Realtek	        B/G/N
-zd1211rw	 ZyDAS/Atheros	  A(2)/B/G
+* ath9k_htc	 Atheros	        B/G/N
+* carl9170	  ZyDAS/Atheros	  A(1)/B/G/N
+* libertas_tfMarvell	        B/G
+* p54usb	    Intersil/Conexant	A(1)/B/G
+* rt73usb	   Ralink	        A(1)/B/G
+* rt2500usb	 Ralink	        A(1)/B/G
+* rt2800usb	Ralink	         A(1)/B/G/N
+* rtl8192cu	Realtek	        B/G/N
+* zd1211rw	 ZyDAS/Atheros	  A(2)/B/G
 
 First disable connman:
 `sudo systemctl disable connman`

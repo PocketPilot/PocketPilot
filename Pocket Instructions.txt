@@ -22,28 +22,49 @@ https://www.digikey.com/en/maker/blogs/how-to-connect-a-beaglebone-black-to-the-
 As described in the above,  you need to create a route:
 sudo /sbin/route add default gw 192.168.7.1
 
-NOTE: On the new image we cannot add  name server to the resolv file,
-we need to create a temporary config file:
-sudo nano /etc/resolv.conf
-nameserver 8.8.8.8
-Remember that you have to add route and recreate /etc/resolv.conf at each reboot.
-
 You can test that the route is working by issuing ping google.com
 And get a response like that
 PING google.com (172.217.6.206) 56(84) bytes of data.
 64 bytes from lga25s54-in-f14.1e100.net (172.217.6.206): icmp_seq=1 ttl=51 time= 20.2 ms
+
+NOTE: On some images (depends on releases) there is no resolv file:
+sudo nano /etc/resolv.conf
+nameserver 8.8.8.8
+Remember that you have to add route and sometimes (depends on the image) recreate /etc/resolv.conf at each reboot.
 
 A special note about FIREWALLS:  make sure your firewall is configured to  allow  a share connection 
 ==========================================================
 
 UPDATING AND LOADING:
 
-Update software: sudo apt update && sudo apt upgrade -y
-Install software: sudo apt install -y bb-cape-overlays cpufrequtils g++ pkg-config gawk git make screen connman python python-dev python-lxml python-pip
-Install Python library: sudo pip install future
-Expend partition: sudo /opt/scripts/tools/grow_partition.sh
-Install RT Kernel: sudo /opt/scripts/tools/update_kernel.sh --bone-rt-kernel --lts-4_14
-Set clock to fixed 1GHz sudo sed -i 's/GOVERNOR="ondemand"/GOVERNOR="performance"/g' /etc/init.d/cpufrequtils
+Update software:
+sudo apt update && sudo apt upgrade -y
+
+Expand partition:
+sudo /opt/scripts/tools/grow_partition.sh
+
+REBOOT AND TEST
+sudo reboot
+ 
+Confirm file system has been extended (number may vary):
+df
+Filesystem 		1K-blocks	 Used 		Available 	Use% 
+/dev/mmcblk0p1 	15247576 	1739372 	12837360 	
+
+
+Install software:
+sudo apt install -y bb-cape-overlays cpufrequtils g++ pkg-config gawk git make screen python python-dev python-lxml python-pip
+
+Install Python library:
+sudo pip install future
+
+
+
+Install RT Kernel:
+sudo /opt/scripts/tools/update_kernel.sh --bone-rt-kernel --lts-4_14
+
+Set clock to fixed 1GHz:
+sudo sed -i 's/GOVERNOR="ondemand"/GOVERNOR="performance"/g' /etc/init.d/cpufrequtils
 
 REBOOT AND TEST
 sudo reboot
@@ -51,11 +72,7 @@ sudo reboot
 Confirm the New kernel:
 uname -a
 Linux beaglebone 4.14.11-bone-rt-r12 #1 PREEMPT RT Wed Jan 3 23:08:51 UTC 2018 armv7l GNU/Linux
-
-Confirm file system has been extended (number may vary):
-df
-Filesystem 		1K-blocks	 Used 		Available 	Use% 
-/dev/mmcblk0p1 	15247576 	1739372 	12837360 	 
+ 
 
 Confirm the processor speed
 cupfreq-info
@@ -89,8 +106,11 @@ WIFI CONNECTION
 OPTION A) CONNMAN 
 Use it as a client connected to an Access Point.
 In that case connman is already loaded and ready to use.
-Configuring connman
 
+Install connman:
+sudo apt install connman
+
+Configuring connman:
 sudo connmanctl
 connmanctl> tether wifi disable
 connmanctl> enable wifi
@@ -99,8 +119,13 @@ connmanctl> services
 connmanctl> agent on
 connmanctl> connect wifi_*_managed_psk ==> this is your access point
 //Your are asked to enter your key//
+--after a few moment you should see the confirmation--
 connmanctl> quit
-Once configure the service will be automatically started
+
+Test:
+sudo ifconfig 
+Will show wlan IP adress
+From another station, ssh to this address.
 
 
 OPTION B) HOSTAPD

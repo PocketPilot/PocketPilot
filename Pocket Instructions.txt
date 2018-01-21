@@ -1,11 +1,20 @@
 POCKET BEAGLE INSTALLATION
 
 LOADING IMAGE:
-Using Etcher or Win32DiskImager, make a SSD (16 GB) using this image file:
- https://debian.beagleboard.org/images/bone-debian-9.2-iot-armhf-2017-10-10-4gb.img.xz
+Reference: https://elinux.org/Beagleboard:BeagleBoneBlack_Debian#Debian_Releases
+
+Using Etcher or Win32DiskImager, make a SD card (16 GB) using a new image.
+At the time of creating this wiki that was:
+https://rcn-ee.net/rootfs/bb.org/testing/2018-01-07/stretch-console/
+
+Insert SD card in the Pocket Beagle and connect the micro USB to a windows based computer.  
 
 CONNECT & SHARE
-Insert ssd and connect the micro USB to a windows based computer.
+Connect to the BeagleBone 
+ssh debian@beaglebone
+Password temppwd
+
+=====================================================
 The "USB-tether-gadget", allows you to bridge and share the Ethernet Network Devices to acces Internet:
 Read the Instruction on how to connect here:
 https://www.digikey.com/en/maker/blogs/how-to-connect-a-beaglebone-black-to-the-internet-using-usb/cdf66181b3a5436e9ad730e4ed4cf9ee
@@ -24,25 +33,17 @@ And get a response like that
 PING google.com (172.217.6.206) 56(84) bytes of data.
 64 bytes from lga25s54-in-f14.1e100.net (172.217.6.206): icmp_seq=1 ttl=51 time= 20.2 ms
 
-A special note about FIREWALLS:  make sure your firewall is configured to  allow  a share connection !!
+A special note about FIREWALLS:  make sure your firewall is configured to  allow  a share connection 
+==========================================================
 
 UPDATING AND LOADING:
-sudo apt update
-sudo apt upgrade bb-cape-overlays
 
-Get the configuration file:
-sudo wget https://github.com/PocketPilot/PocketPilot/tree/master/config/pocketpilot_pin.cfg
-
-Extend partition: 
-sudo /opt/scripts/tools/grow_partition.sh
-Upgrade Kernel to RT 4.14:
-sudo /opt/scripts/tools/update_kernel.sh --bone-rt-kernel --lts-4_14
-
-Removing some unused packages:
-sudo apt remove haveged bonescript c9-core-installer roboticscape bb-node-red-installer --purge
-
-Shutdown apache2 (we dont use it):
-sudo systemctl disable apache2
+Update software: sudo apt update && sudo apt upgrade -y
+Install software: sudo apt install -y bb-cape-overlays cpufrequtils g++ pkg-config gawk git make screen connman python python-dev python-lxml python-pip
+Install Python library: sudo pip install future
+Expend partition: sudo /opt/scripts/tools/grow_partition.sh
+Install RT Kernel: sudo /opt/scripts/tools/update_kernel.sh --bone-rt-kernel --lts-4_14
+Set clock to fixed 1GHz sudo sed -i 's/GOVERNOR="ondemand"/GOVERNOR="performance"/g' /etc/init.d/cpufrequtils
 
 REBOOT AND TEST
 sudo reboot
@@ -51,10 +52,14 @@ Confirm the New kernel:
 uname -a
 Linux beaglebone 4.14.11-bone-rt-r12 #1 PREEMPT RT Wed Jan 3 23:08:51 UTC 2018 armv7l GNU/Linux
 
-Confirm file system has been extended:
+Confirm file system has been extended (number may vary):
 df
 Filesystem 		1K-blocks	 Used 		Available 	Use% 
-/dev/mmcblk0p1 	15247576 	1739372 	12837360 	12% /
+/dev/mmcblk0p1 	15247576 	1739372 	12837360 	 
+
+Confirm the processor speed
+cupfreq-info
+You should read 1000 MHZ
 
 Check SPI correctly mapped (without adding a DTB):
 ls /dev/spi*
@@ -125,7 +130,7 @@ Then update tools:
 sudo apt-get install hostapd dnsmasq iptables iw wireless-tools
 
 
-Check the wifi dongle number with 
+Check the wifi dongle id with 
 ifconfig -a
 and confirm wlan0 or wlan1 or else
 

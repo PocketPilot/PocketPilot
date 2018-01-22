@@ -246,21 +246,22 @@ https://elinux.org/Beagleboard:BeagleBoneBlack_Debian#U-Boot_Overlays
 
 All the I/O are configured from user space using config-pin utility
 This utility can use a parameter file to automatically configure the Beagle Pocket
-(We have downloaded this configuration file on previous step)
 This is how its launched manually:
 sudo config-pin -f ./pocketpilot_pin.cfg
 
-And this will be launched automatically as part of the arducopter service
+Get the file:
+wget https://raw.githubusercontent.com/PocketPilot/PocketPilot/master/config/pocketpilot_pin.cfg
+
 
 
 ARDUCOPTER SERVICE
 We will edit a file containing instructions to load the pins and ArduCopter
 
- sudo nano /lib/systemd/system/arducopter.service
+sudo nano /lib/systemd/system/arducopter.service
 
 [Unit]
-Description=ArduCopter Service
-After=networking.service
+Description=ArduCopter
+Service After=networking.service
 Conflicts=arduplane.service ardupilot.service ardurover.service
 
 [Service]
@@ -273,11 +274,9 @@ Restart=on-failure
 WantedBy=multi-user.target
 
 
-
 ENABLE THE NEW SERVICE
 sudo systemctl enable arducopter.service
 the service will start automatically at bootup.
-
 
 
 SERVICE RELATED UTILITIES

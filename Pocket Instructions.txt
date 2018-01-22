@@ -78,8 +78,10 @@ Linux beaglebone 4.14.11-bone-rt-r12 #1 PREEMPT RT Wed Jan 3 23:08:51 UTC 2018 a
  
 
 Confirm the processor speed
-cupfreq-info
-You should read 1000 MHZ
+cpufreq-info
+You should read:
+current CPU frequency is 1000 MHz.
+
 
 Check SPI correctly mapped (without adding a DTB):
 ls /dev/spi*

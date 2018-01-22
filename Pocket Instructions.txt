@@ -48,8 +48,11 @@ sudo reboot
  
 Confirm file system has been extended (number may vary):
 df
-Filesystem 		1K-blocks	 Used 		Available 	Use% 
-/dev/mmcblk0p1 	15247576 	1739372 	12837360 	
+Filesystem     1K-blocks   Used Available Use% Mounted on
+udev              219752      0    219752   0% /dev
+tmpfs              49572   4888     44684  10% /run
+/dev/mmcblk0p1  15025976 390448  14001752   3% /
+	
 
 
 Install software:

@@ -159,6 +159,9 @@ sudo systemctl disable connman
 Then update tools:
 sudo apt-get install hostapd dnsmasq iptables iw wireless-tools
 
+You may need to get the driver for the wifi stick, 
+this is the driver for TP-LINK TL-WN722N:
+sudo apt-get install firmware-atheros
 
 Check the wifi dongle id with 
 ifconfig -a
@@ -174,6 +177,7 @@ You should see the Wlan interface with the others
 
 Now edit network files:
 sudo nano /etc/network/interfaces and add the wifi config (with wlan-number)
+allow-hotplug wlan0
 auto wlan0
 iface wlan0 inet static
 hostapd /etc/hostapd/hostapd.conf

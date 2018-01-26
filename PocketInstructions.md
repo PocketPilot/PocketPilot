@@ -73,8 +73,9 @@ Linux beaglebone 4.14.11-bone-rt-r12 #1 PREEMPT RT Wed Jan 3 23:08:51 UTC 2018 a
 ```
 
 Check SPI correctly mapped (without adding a DTB):
+`ls /dev/spi*`
+
 ```
-ls /dev/spi*
 /dev/spidev0.0 /dev/spidev1.0 /dev/spidev1.1
 ```
 

@@ -1,10 +1,17 @@
 # POCKET BEAGLE INSTALLATION
 
 ## LOADING IMAGE:
-Using Etcher or Win32DiskImager, make a SSD (16 GB) using this image file:
- https://debian.beagleboard.org/images/bone-debian-9.2-iot-armhf-2017-10-10-4gb.img.xz
+Reference: https://elinux.org/Beagleboard:BeagleBoneBlack_Debian#Debian_Releases
+
+Using Etcher or Win32DiskImager, make a SD card (16 GB) using a new image.
+At the time of creating this wiki that was:
+https://rcn-ee.net/rootfs/bb.org/testing/2018-01-07/stretch-console/
 
 ## CONNECT & SHARE
+Connect to the BeagleBone 
+ssh debian@beaglebone
+Password temppwd
+
 Insert ssd and connect the micro USB to a windows based computer.
 The "USB-tether-gadget", allows you to bridge and share the Ethernet Network Devices to acces Internet:
 Read the Instruction on how to connect here:
@@ -13,8 +20,7 @@ https://www.digikey.com/en/maker/blogs/how-to-connect-a-beaglebone-black-to-the-
 As described in the above,  you need to create a route:
 `sudo /sbin/route add default gw 192.168.7.1`
 
-NOTE: On the new image we cannot add  name server to the resolv file,
-we need to create a temporary config file:
+NOTE: On some images (depends on releases) there is no resolv file:
 `sudo nano /etc/resolv.conf`
 `nameserver 8.8.8.8`
 Remember that you have to add route and recreate `/etc/resolv.conf` at each reboot.
@@ -28,24 +34,34 @@ PING google.com (172.217.6.206) 56(84) bytes of data.
 A special note about FIREWALLS:  make sure your firewall is configured to  allow  a share connection !!
 
 ## UPDATING AND LOADING:
-`sudo apt update`
-
-`sudo apt upgrade bb-cape-overlays`
-
-Get the configuration file:
-`sudo wget https://github.com/PocketPilot/PocketPilot/tree/master/config/pocketpilot_pin.cfg`
+`sudo apt update && sudo apt upgrade -y`
 
 Extend partition: 
 `sudo /opt/scripts/tools/grow_partition.sh`
 
+##REBOOT AND TEST
+`sudo reboot`
+ 
+Confirm file system has been extended (number may vary):
+`df`
+```
+Filesystem     1K-blocks   Used Available Use% Mounted on
+udev              219752      0    219752   0% /dev
+tmpfs              49572   4888     44684  10% /run
+/dev/mmcblk0p1  15025976 390448  14001752   3% /
+```
+
+Install software:
+`sudo apt install -y bb-cape-overlays cpufrequtils g++ pkg-config gawk git make screen python python-dev python-lxml python-pip`
+
+Install Python library:
+`sudo pip install future`
+
 Upgrade Kernel to RT 4.14:
 `sudo /opt/scripts/tools/update_kernel.sh --bone-rt-kernel --lts-4_14`
 
-Removing some unused packages:
-`sudo apt remove haveged bonescript c9-core-installer roboticscape bb-node-red-installer --purge`
-
-Shutdown apache2 (we dont use it):
-`sudo systemctl disable apache2`
+Set clock to fixed 1GHz:
+`sudo sed -i 's/GOVERNOR="ondemand"/GOVERNOR="performance"/g' /etc/init.d/cpufrequtils`
 
 REBOOT AND TEST
 `sudo reboot`
@@ -54,12 +70,6 @@ Confirm the New kernel:
 `uname -a`
 `Linux beaglebone 4.14.11-bone-rt-r12 #1 PREEMPT RT Wed Jan 3 23:08:51 UTC 2018 armv7l GNU/Linux`
 
-Confirm file system has been extended:
-```
-df
-Filesystem 		1K-blocks	 Used 		Available 	Use% 
-/dev/mmcblk0p1 	15247576 	1739372 	12837360 	12% /
-```
 
 Check SPI correctly mapped (without adding a DTB):
 ```
@@ -93,7 +103,10 @@ or
 OPTION A) CONNMAN 
 Use it as a client connected to an Access Point.
 In that case connman is already loaded and ready to use.
-Configuring connman
+
+Install connman:
+`sudo apt install connman`
+
 ```
 sudo connmanctl
 connmanctl> tether wifi disable
@@ -105,7 +118,7 @@ connmanctl> connect wifi_*_managed_psk ==> this is your access point
 //Your are asked to enter your key//
 connmanctl> quit
 ```
-Once configure the service will be automatically started
+Once configured, the service will be automatically started.
 
 
 OPTION B) HOSTAPD
@@ -129,11 +142,15 @@ Driver	    Manufacturer	   PHY modes
 
 First disable connman:
 `sudo systemctl disable connman`
+
 Then update tools:
 `sudo apt-get install hostapd dnsmasq iptables iw wireless-tools`
 
+You may need to get the driver for the wifi stick, 
+this is the driver for TP-LINK TL-WN722N:
+`sudo apt-get install firmware-atheros`
 
-Check the wifi dongle number with 
+Check the wifi dongle id with 
 `ifconfig -a`
 and confirm wlan0 or wlan1 or else
 
@@ -142,12 +159,13 @@ Manually start the wireless card
 
 Confirm its up 
 `ifconfig`
-You should see the Wlan interface with the others
+You should see the Wlan interface with the others network devices
 
 
 Now edit network files:
 `sudo nano /etc/network/interfaces and add the wifi config (with wlan-number)`
 ```
+allow-hotplug wlan0
 auto wlan0
 iface wlan0 inet static
 hostapd /etc/hostapd/hostapd.conf
@@ -226,7 +244,9 @@ This utility can use a parameter file to automatically configure the Beagle Pock
 This is how its launched manually:
 `sudo config-pin -f ./pocketpilot_pin.cfg`
 
-And this will be launched automatically as part of the arducopter service
+Get the file:
+`wget https://raw.githubusercontent.com/PocketPilot/PocketPilot/master/config/pocketpilot_pin.cfg`
+
 
 
 ## ARDUCOPTER SERVICE

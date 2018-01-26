@@ -39,7 +39,7 @@ A special note about FIREWALLS:  make sure your firewall is configured to  allow
 Extend partition: 
 `sudo /opt/scripts/tools/grow_partition.sh`
 
-##REBOOT AND TEST
+REBOOT AND TEST
 `sudo reboot`
  
 Confirm file system has been extended (number may vary):
@@ -68,8 +68,9 @@ REBOOT AND TEST
  
 Confirm the New kernel:
 `uname -a`
-`Linux beaglebone 4.14.11-bone-rt-r12 #1 PREEMPT RT Wed Jan 3 23:08:51 UTC 2018 armv7l GNU/Linux`
-
+```
+Linux beaglebone 4.14.11-bone-rt-r12 #1 PREEMPT RT Wed Jan 3 23:08:51 UTC 2018 armv7l GNU/Linux
+```
 
 Check SPI correctly mapped (without adding a DTB):
 ```
@@ -78,12 +79,14 @@ ls /dev/spi*
 ```
 
 Check the serial ports as well (dont forget its the letter "O"):
-```ls /dev/ttyO*
+`ls /dev/ttyO*`
+```
 /dev/ttyO0 /dev/ttyO1 /dev/ttyO2 /dev/ttyO4
 ```
 
 Check that boot environment include the universal cape (used to map IO):
-```cat /boot/uEnv.txt
+`cat /boot/uEnv.txt`
+```
 uname_r=4.14.11-bone-rt-r12
 enable_uboot_overlays=1
 uboot_overlay_pru=/lib/firmware/AM335X-PRU-RPROC-4-4-TI-00A0.dtbo
@@ -107,8 +110,10 @@ In that case connman is already loaded and ready to use.
 Install connman:
 `sudo apt install connman`
 
+Start the interactive console:
+`sudo connmanctl`
+
 ```
-sudo connmanctl
 connmanctl> tether wifi disable
 connmanctl> enable wifi
 connmanctl> scan wifi
@@ -151,14 +156,14 @@ this is the driver for TP-LINK TL-WN722N:
 `sudo apt-get install firmware-atheros`
 
 Check the wifi dongle id with 
-`ifconfig -a`
+`sudo ifconfig -a`
 and confirm wlan0 or wlan1 or else
 
 Manually start the wireless card
 `sudo ifconfig wlan0 up`
 
 Confirm its up 
-`ifconfig`
+`sudo ifconfig`
 You should see the Wlan interface with the others network devices
 
 

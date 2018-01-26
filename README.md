@@ -20,11 +20,11 @@ Video of initial prototype, keeping a quadcopter stable indoors using an Optical
 
 Wiring diagram of prototype:
 
-![Wiring diagram of prototype](https://raw.githubusercontent.com/PocketPilot/PocketPilot/master/doc/Initial%20Prototype/Pocket%20Wiring.jpg "Wiring diagram of prototype")
+![Wiring diagram of prototype](https://raw.githubusercontent.com/PocketPilot/PocketPilot/master/doc/Initial%20Prototype/Pocket_Wiring_v2.jpg "Wiring diagram of prototype")
 
 Photo of initial prototype:
 
-![Photo of initial prototype](https://raw.githubusercontent.com/PocketPilot/PocketPilot/master/doc/Initial%20Prototype/Pocket_Wiring_v2.jpg "Photo of initial prototype")
+![Photo of initial prototype](https://raw.githubusercontent.com/PocketPilot/PocketPilot/master/doc/Initial%20Prototype/Pocket%20Prototype.jpg "Photo of initial prototype")
 
 Original description of the Initial Design (ie: selection of pins & ports needed) is at 
 https://github.com/shervinemami/BBBmicro-PCB/wiki/Initial-Design

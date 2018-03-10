@@ -103,6 +103,9 @@ or
 
 
 ## WIFI CONNECTION
+General note on networking: 
+PocketPilot does not not have an Ethernet port, so you can disable it from
+the /etc/network/interfaces (add # at beginning of lines)
 
 OPTION A) CONNMAN 
 Use it as a client connected to an Access Point.
@@ -263,6 +266,7 @@ We will edit a file containing instructions to load the pins and ArduCopter
 [Unit]
 Description=ArduCopter Service
 After=networking.service
+StartLimitIntervalSec=0
 Conflicts=arduplane.service ardupilot.service ardurover.service
 
 [Service]
@@ -270,6 +274,7 @@ ExecStartPre=/bin/bash -c "/usr/bin/config-pin -f /home/debian/pocketpilot_pin.c
 ExecStart=/home/debian/arducopter -C udp:192.168.8.34:14550 -E /dev/ttyO1
 
 Restart=on-failure
+RestartSec=1
 
 [Install]
 WantedBy=multi-user.target

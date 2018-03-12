@@ -3,9 +3,8 @@
 ## LOADING IMAGE:
 Reference: https://elinux.org/Beagleboard:BeagleBoneBlack_Debian#Debian_Releases
 
-Using Etcher or Win32DiskImager, make a SD card (16 GB) using a new image.
-At the time of creating this wiki that was:
-https://rcn-ee.net/rootfs/bb.org/testing/2018-01-07/stretch-console/
+Using Etcher or Win32DiskImager, make a SD card (16 GB) using a on of these images.
+https://rcn-ee.net/rootfs/bb.org/testing/
 
 ## CONNECT & SHARE
 Connect to the BeagleBone 

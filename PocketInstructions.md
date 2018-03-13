@@ -90,7 +90,7 @@ Check that boot environment include the universal cape (used to map IO):
 ```
 uname_r=4.14.11-bone-rt-r12
 enable_uboot_overlays=1
-uboot_overlay_pru=/lib/firmware/AM335X-PRU-RPROC-4-4-TI-00A0.dtbo
+uboot_overlay_pru=/lib/firmware/AM335X-PRU-UIO-00A0.dtbo
 enable_uboot_cape_universal=1
 cmdline=coherent_pool=1M net.ifnames=0 quiet
 ```

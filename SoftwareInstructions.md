@@ -24,6 +24,12 @@ NOTE: On some images (depends on releases) there is no resolv file:
 `sudo nano /etc/resolv.conf`
 `nameserver 8.8.8.8`
 Remember that you have to add route and recreate `/etc/resolv.conf` at each reboot.
+Other method (easier= dont need to edit file):
+sudo -s
+/sbin/route add default gw 192.168.7.1
+echo "nameserver 8.8.8.8" >> /etc/resolv.conf
+su debian
+
 
 You can test that the route is working by issuing `ping google.com`
 And get a response like that
@@ -52,7 +58,7 @@ tmpfs              49572   4888     44684  10% /run
 ```
 
 Install software:
-`sudo apt install -y bb-cape-overlays cpufrequtils g++ pkg-config gawk git make screen python python-dev python-lxml python-pip`
+`sudo apt install -y cpufrequtils bb-cape-overlays g++ pkg-config gawk git make screen python python-dev python-lxml python-pip`
 
 Install Python library:
 `sudo pip install future`

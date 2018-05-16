@@ -30,7 +30,7 @@ Other method (easier= dont need to edit file):
 sudo -s
 /sbin/route add default gw 192.168.7.1
 echo "nameserver 8.8.8.8" >> /etc/resolv.conf
-su debiani2c-tools
+su debian
 ```
 
 

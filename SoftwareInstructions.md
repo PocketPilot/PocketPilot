@@ -26,10 +26,12 @@ NOTE: On some images (depends on releases) there is no resolv file:
 Remember that you have to add route and recreate `/etc/resolv.conf` at each reboot.
 
 Other method (easier= dont need to edit file):
-`sudo -s`
-`/sbin/route add default gw 192.168.7.1`
-`echo "nameserver 8.8.8.8" >> /etc/resolv.conf`
-`su debian`
+```sudo -s
+/sbin/route add default gw 192.168.7.1
+echo "nameserver 8.8.8.8" >> /etc/resolv.conf
+su debiani2c-tools
+```
+
 
 
 You can test that the route is working by issuing `ping google.com`
@@ -59,7 +61,7 @@ tmpfs              49572   4888     44684  10% /run
 ```
 
 Install software:
-`sudo apt install -y cpufrequtils bb-cape-overlays g++ pkg-config gawk git make screen python python-dev python-lxml python-pip`
+`sudo apt install -y cpufrequtils i2c-tools minicom g++ pkg-config gawk git make screen python python-dev python-lxml python-pip`
 
 Install Python library:
 `sudo pip install future`

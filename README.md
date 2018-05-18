@@ -19,6 +19,7 @@ Video of PocketPilot v1, keeping a quadcopter stable indoors using an Optical Fl
 [![Video of initial prototype](https://img.youtube.com/vi/BBnUvO6x0oY/0.jpg "Video of initial prototype")](https://youtu.be/BBnUvO6x0oY)
 
 Wiring diagram of PocketPilot v1:
+!!!PLEASE NOTE: THE PINS ASSIGNEMENT HAVE CHANGED AND THIS ROUTING IS NO LONGER WORKING. PLEASE REFER TO THE FINAL SCHMATIC (PDF) !!
 
 ![Wiring diagram of prototype](https://raw.githubusercontent.com/PocketPilot/PocketPilot/master/doc/Initial%20Prototype/Pocket_Wiring_v2.jpg "Wiring diagram of prototype")
 

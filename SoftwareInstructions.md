@@ -6,10 +6,11 @@ Reference: https://elinux.org/Beagleboard:BeagleBoneBlack_Debian#Debian_Releases
 Using Etcher or Win32DiskImager, make a SD card (16 GB) using a on of these images.
 Select one of the latest bone debian console.
 https://rcn-ee.net/rootfs/bb.org/testing/
+https://rcn-ee.net/rootfs/bb.org/testing/2018-05-27/stretch-console/bone-debian-9.4-console-armhf-2018-05-27-1gb.img.xz
 
 ## CONNECT & SHARE
-Connect to the BeagleBone 
-ssh debian@beaglebone
+Connect to the PocketBeagle 
+`ssh debian@beaglebone` (if connected via USB `ssh debian@192.168.7.2`)
 Password temppwd
 
 Insert ssd and connect the micro USB to a windows based computer.
@@ -30,7 +31,7 @@ Other method (easier= dont need to edit file):
 sudo -s
 /sbin/route add default gw 192.168.7.1
 echo "nameserver 8.8.8.8" >> /etc/resolv.conf
-su debian
+exit
 ```
 
 
@@ -53,12 +54,16 @@ REBOOT AND TEST
 `sudo reboot`
  
 Confirm file system has been extended (number may vary):
-`df`
+`df -h`
 ```
-Filesystem     1K-blocks   Used Available Use% Mounted on
-udev              219752      0    219752   0% /dev
-tmpfs              49572   4888     44684  10% /run
-/dev/mmcblk0p1  15025976 390448  14001752   3% /
+Filesystem      Size  Used Avail Use% Mounted on
+udev            216M     0  216M   0% /dev
+tmpfs            49M  4.4M   44M  10% /run
+/dev/mmcblk0p1   15G  334M   14G   3% /
+tmpfs           242M     0  242M   0% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
+tmpfs           242M     0  242M   0% /sys/fs/cgroup
+tmpfs            49M     0   49M   0% /run/user/1000
 ```
 
 Install software:
@@ -67,8 +72,8 @@ Install software:
 Install Python library:
 `sudo pip install future`
 
-Upgrade Kernel to RT 4.14:
-`sudo /opt/scripts/tools/update_kernel.sh --bone-rt-kernel --lts-4_14`
+Install Kernel 4.9 ti rt:
+`sudo /opt/scripts/tools/update_kernel.sh --ti-rt-channel --lts-4_9`
 
 Set clock to fixed 1GHz:
 `sudo sed -i 's/GOVERNOR="ondemand"/GOVERNOR="performance"/g' /etc/init.d/cpufrequtils`
@@ -86,7 +91,7 @@ Check SPI correctly mapped (without adding a DTB):
 `ls /dev/spi*`
 
 ```
-/dev/spidev0.0 /dev/spidev1.0 /dev/spidev1.1
+/dev/spidev1.0  /dev/spidev2.0  /dev/spidev2.1
 ```
 
 Check the serial ports as well (dont forget its the letter "O"):
@@ -98,7 +103,7 @@ Check the serial ports as well (dont forget its the letter "O"):
 Check that boot environment include the universal cape (used to map IO):
 `cat /boot/uEnv.txt`
 ```
-uname_r=4.14.11-bone-rt-r12
+uname_r=4.9.88-ti-rt-r111
 enable_uboot_overlays=1
 uboot_overlay_pru=/lib/firmware/AM335X-PRU-UIO-00A0.dtbo
 enable_uboot_cape_universal=1
@@ -273,15 +278,16 @@ We will edit a file containing instructions to load the pins and ArduCopter
 
 `sudo nano /lib/systemd/system/arducopter.service`
 ```
-[Unit]
+Unit]
 Description=ArduCopter Service
 After=networking.service
 StartLimitIntervalSec=0
 Conflicts=arduplane.service ardupilot.service ardurover.service
 
 [Service]
+ExecStartPre=/bin/sleep 30
 ExecStartPre=/bin/bash -c "/usr/bin/config-pin -f /home/debian/pocketpilot_pin.cfg"
-ExecStart=/home/debian/arducopter -C udp:192.168.8.34:14550 -E /dev/ttyO1
+ExecStart=/home/debian/arducopter -B /dev/ttyO2 -C udp:192.168.7.1:14550
 
 Restart=on-failure
 RestartSec=1

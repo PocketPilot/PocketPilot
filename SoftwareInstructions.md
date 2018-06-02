@@ -278,7 +278,7 @@ We will edit a file containing instructions to load the pins and ArduCopter
 
 `sudo nano /lib/systemd/system/arducopter.service`
 ```
-Unit]
+[Unit]
 Description=ArduCopter Service
 After=networking.service
 StartLimitIntervalSec=0

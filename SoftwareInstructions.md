@@ -8,7 +8,7 @@ Boot time is still very long with rt linux (90 secs), Work In Progress.
 
 You need to build the new ArduCopter release (that reads on SPI2 -- it was SPI1 on 4_14).
 
-Leds and Buzzer are not yet implemented in code (we strongly suggest that you work with a GCS connexion for tests).
+Buzzer are not yet implemented in code (we strongly suggest that you work with a GCS connexion for tests).
 
 Analog Voltage and Current works on the bench but not yet tested in flight (Please update).
 
@@ -97,7 +97,7 @@ REBOOT AND TEST
 Confirm the New kernel:
 `uname -a`
 ```
-Linux beaglebone 4.14.11-bone-rt-r12 #1 PREEMPT RT Wed Jan 3 23:08:51 UTC 2018 armv7l GNU/Linux
+Linux beaglebone 4.9.88-ti-rt-r111 #1 SMP PREEMPT RT Sun Apr 22 10:34:09 UTC 2018 armv7l GNU/Linux
 ```
 
 Check SPI correctly mapped (without adding a DTB):

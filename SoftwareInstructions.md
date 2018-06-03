@@ -1,5 +1,14 @@
 # POCKET BEAGLE INSTALLATION
 
+## DEVELOPMENT STATUS:
+As of June 3 2018
+We have reverted the Real-Time Linux 4_9 becauses of ktimersoft was using too much cycles on 4_14
+Boot time is still very long with rt linux (90 secs), Work In Progress
+You need to build the new ArduCopter release (that reads on SPI2 -- it was SPI1 on 4_14)
+Leds and Buzzer are not yet implemented in code (we strongly suggest that you work with a GCS connexion for tests)
+Analog Voltage and Current works on the bench but not yet tested in flight (Please update)
+
+
 ## LOADING IMAGE:
 Reference: https://elinux.org/Beagleboard:BeagleBoneBlack_Debian#Debian_Releases
 

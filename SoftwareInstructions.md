@@ -300,7 +300,7 @@ Conflicts=arduplane.service ardupilot.service ardurover.service
 [Service]
 ExecStartPre=/bin/sleep 30
 ExecStartPre=/bin/bash -c "/usr/bin/config-pin -f /home/debian/pocketpilot_pin.cfg"
-ExecStart=/home/debian/arducopter -B /dev/ttyO2 -C udp:192.168.7.1:14550
+ExecStart=/home/debian/arducopter -A udp:192.168.7.1:14550 -B /dev/ttyO2 -C /dev/ttyO4
 
 Restart=on-failure
 RestartSec=1

@@ -267,7 +267,7 @@ and voilà ;-)
 Make Firmware (Compile or Cross-Compile) as per BBBMINI instructions:
 https://github.com/mirkix/BBBMINI/blob/master/doc/software/software.md#compile-ardupilot-native-on-beaglebone
 and build using pocket profile:
-`/waf configure --board=pocket`
+`/waf configure --board pocket`
 
 copy file in /home/debian
 

@@ -271,7 +271,7 @@ You must specify release 3.6 and latest  git checkout Copter-3.6
 `git checkout Copter-3.6`
 
 and build using pocket profile:
-`/waf configure --board pocket`
+`./waf configure --board pocket`
 
 copy file in /home/debian
 

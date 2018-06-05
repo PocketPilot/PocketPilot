@@ -266,6 +266,8 @@ and voilà ;-)
 ## ARDUPILOT
 Make Firmware (Compile or Cross-Compile) as per BBBMINI instructions:
 https://github.com/mirkix/BBBMINI/blob/master/doc/software/software.md#compile-ardupilot-native-on-beaglebone
+You must specify release 3.6 and latest  git checkout Copter-3.6
+`git checkout Copter-3.6`
 and build using pocket profile:
 `/waf configure --board pocket`
 

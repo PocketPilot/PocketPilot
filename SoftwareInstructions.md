@@ -1,12 +1,8 @@
 # POCKET BEAGLE INSTALLATION
 
 ## DEVELOPMENT STATUS:
-As of June 3 2018
-We have reverted the Real-Time Linux 4_9 becauses of ktimersoft was using too much cycles on 4_14.
-
-Boot time is still very long with rt linux (90 secs), Work In Progress.
-
-You need to build the new ArduCopter release (that reads on SPI2 -- it was SPI1 on 4_14).
+Jan. 2019
+The new rt krnel has resolved the PRU and slow boot
 
 Buzzer are not yet implemented in code (we strongly suggest that you work with a GCS connexion for tests).
 
@@ -85,8 +81,13 @@ Install software:
 Install Python library:
 `sudo pip install future`
 
-Install Kernel 4.9 ti rt:
-`sudo /opt/scripts/tools/update_kernel.sh --ti-rt-channel --lts-4_9`
+Install Kernel 4.99 bone rt:
+sometimes it is necessary to update the tools in order to get the latest kernels
+cd /opt/scripts/tools
+git pull
+
+`sudo /opt/scripts/tools/update_kernel.sh --lts-4_19 --bone-channel`
+
 
 Set clock to fixed 1GHz:
 `sudo sed -i 's/GOVERNOR="ondemand"/GOVERNOR="performance"/g' /etc/init.d/cpufrequtils`

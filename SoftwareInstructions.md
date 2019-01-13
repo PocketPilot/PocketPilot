@@ -2,7 +2,7 @@
 
 ## DEVELOPMENT STATUS:
 Jan. 2019
-The new rt krnel has resolved the PRU and slow boot
+The new rt kernel has resolved the PRU and slow boot
 
 Buzzer are not yet implemented in code (we strongly suggest that you work with a GCS connexion for tests).
 
@@ -98,7 +98,9 @@ REBOOT AND TEST
 Confirm the New kernel:
 `uname -a`
 ```
-Linux beaglebone 4.9.88-ti-rt-r111 #1 SMP PREEMPT RT Sun Apr 22 10:34:09 UTC 2018 armv7l GNU/Linux
+
+Linux beaglebone 4.19.14-bone-rt-r18 #1stretch Fri Jan 11 02:19:52 UTC 2019 armv7l GNU/Linux
+
 ```
 
 Check SPI correctly mapped (without adding a DTB):
@@ -117,7 +119,7 @@ Check the serial ports as well (dont forget its the letter "O"):
 Check that boot environment include the universal cape (used to map IO):
 `cat /boot/uEnv.txt`
 ```
-uname_r=4.9.88-ti-rt-r111
+uname_r=4.19.14-bone-rt-r18
 enable_uboot_overlays=1
 uboot_overlay_pru=/lib/firmware/AM335X-PRU-UIO-00A0.dtbo
 enable_uboot_cape_universal=1

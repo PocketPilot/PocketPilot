@@ -86,7 +86,7 @@ sometimes it is necessary to update the tools in order to get the latest kernels
 cd /opt/scripts/tools
 git pull
 
-`sudo /opt/scripts/tools/update_kernel.sh --lts-4_19 --bone-channel`
+`sudo /opt/scripts/tools/update_kernel.sh --lts-4_19 --bone-rt-channel`
 
 
 Set clock to fixed 1GHz:

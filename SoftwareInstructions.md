@@ -86,7 +86,7 @@ sometimes it is necessary to update the tools in order to get the latest kernels
 cd /opt/scripts/tools
 git pull
 
-`sudo /opt/scripts/tools/update_kernel.sh --lts-4_19 --bone-rt-channel`
+`sudo /opt/scripts/tools/update_kernel.sh --ti-rt-channel --lts-4_19`
 
 
 Set clock to fixed 1GHz:
@@ -99,7 +99,7 @@ Confirm the New kernel:
 `uname -a`
 ```
 
-Linux beaglebone 4.19.14-bone-rt-r18 #1stretch Fri Jan 11 02:19:52 UTC 2019 armv7l GNU/Linux
+Linux beaglebone 4.19.14-ti-rt-rXX #1stretch Fri Jan 11 02:19:52 UTC 2019 armv7l GNU/Linux
 
 ```
 

@@ -56,7 +56,7 @@ A special note about FIREWALLS:  make sure your firewall is configured to  allow
 ## UPDATING AND LOADING:
 `sudo apt update && sudo apt upgrade -y`
 
-Extend partition: 
+Extend partition(don not grow if you plan to clone to eMMC):
 `sudo /opt/scripts/tools/grow_partition.sh`
 
 REBOOT AND TEST
@@ -86,7 +86,7 @@ sometimes it is necessary to update the tools in order to get the latest kernels
 cd /opt/scripts/tools
 git pull
 
-`sudo /opt/scripts/tools/update_kernel.sh --ti-rt-channel --lts-4_19`
+`sudo /opt/scripts/tools/update_kernel.sh --lts-4_19 --bone-rt-channel`
 
 
 Set clock to fixed 1GHz:
@@ -99,7 +99,7 @@ Confirm the New kernel:
 `uname -a`
 ```
 
-Linux beaglebone 4.19.14-ti-rt-rXX #1stretch Fri Jan 11 02:19:52 UTC 2019 armv7l GNU/Linux
+Linux beaglebone 4.19.27-bone-rt-r27 #1stretch PREEMPT RT Wed Mar 6 04:14:38 UTC 2019 armv7l GNU/Linux
 
 ```
 
@@ -119,7 +119,7 @@ Check the serial ports as well (dont forget its the letter "O"):
 Check that boot environment include the universal cape (used to map IO):
 `cat /boot/uEnv.txt`
 ```
-uname_r=4.19.14-bone-rt-r18
+uname_r=4.19.27-bone-rt-r27
 enable_uboot_overlays=1
 uboot_overlay_pru=/lib/firmware/AM335X-PRU-UIO-00A0.dtbo
 enable_uboot_cape_universal=1
